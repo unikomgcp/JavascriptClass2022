@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript full form</title>
+	<link rel="stylesheet" type="text/css" href="style505.css">
+</head>
+<body>
+	<center><h2>CONTOH FORM JAVASCRIPT</h2></center>
+	<div class="login">
+		<!-- form javascript - fjs -->
+		<form action="#" method="POST" name="fjs" id="fjs" onSubmit="prosesSubmit()">
+		
+			<div>
+				<label>NIM:</label>
+				<input type="text" name="nim" id="nim" />
+			</div>
+			<div>
+				<label>Nama Lengkap:</label>
+				<input type="text" name="nama" id="nama" />
+			</div>
+			<div>
+				<label>Jenis Kelamin:</label>
+				<br /><input type="radio" name="jk" value="l" /> Laki-laki
+				<br /><input type="radio" name="jk" value="p" /> Perempuan
+				<br /><input type="radio" name="jk" value="u" /> Lainnya
+			</div>
+			<br />
+			<div>
+				<label>Tanggal Lahir:</label>
+				<br /><input type="date" name="tl" id="tl" />
+			</div>
+			<br />
+			<div>
+				<label>Alamat Lengkap:</label>
+				<textarea name="alamat" id="alamat" rows="3"></textarea>
+			</div>
+			<div>
+				<label>Jurusan:</label>
+				<select name="jurusan" id="jurusan" onchange="myJurusan()">
+					<option value="if">Teknik Informatika</option>
+					<option value="si">Sistem Informasi</option>
+				</select>
+			</div>
+
+			<br />
+			<!-- div untuk mata kuliah-->
+			<div id="matkul">
+				<label>Mata Kuliah yang diambil:</label>
+				<br /><input type="checkbox" name="mk" id="mk" value="AI" /> Artificial Intelligence
+				<input type="checkbox" name="mk" id="mk" value="SE" /> Software Engineering
+				<br /><input type="checkbox" name="mk" id="mk" value="PROG" /> Pemrograman
+			</div>
+
+			<br />
+			<div>
+				<input type="submit" value="Daftar" class="tombol">
+			</div>
+		
+		</form>
+	</div>
+
+
+    <script type="text/javascript">
+
+		//function onchange berdasarkan jurusan
+		function myJurusan(){
+			let piljur = document.getElementById("jurusan").value;
+			if (piljur == "si"){
+				//gunakan backtick (`) yang berada disebelah kiri tombol 1 pada keyboard
+				document.getElementById("matkul").innerHTML = `<label>Mata Kuliah yang diambil:</label>
+				<br /><input type="checkbox" name="mk" id="mk" value="MI" /> Manajemen Informatika
+				<input type="checkbox" name="mk" id="mk" value="SIE" /> Sistem Informasi Enterprise
+				<br /><input type="checkbox" name="mk" id="mk" value="ASI" /> Audit Sistem Informasi`;
+			
+			} else if (piljur == "if"){
+				document.getElementById("matkul").innerHTML = `<label>Mata Kuliah yang diambil:</label>
+				<br /><input type="checkbox" name="mk" id="mk" value="AI" /> Artificial Intelligence
+				<input type="checkbox" name="mk" id="mk" value="SE" /> Software Engineering
+				<br /><input type="checkbox" name="mk" id="mk" value="PROG" /> Pemrograman`;
+			
+			}
+		}
+
+		//proses ketika di klik submit
+		function prosesSubmit(){
+        	let nim = document.getElementById("nim").value;
+			let nama = document.getElementById("nama").value;
+			let jk = document.querySelector('input[name="jk"]:checked').value;
+			let tl = document.getElementById("tl").value;
+			let alamat = document.getElementById("alamat").value;
+			let jurusan = document.getElementById("jurusan").value;
+			let mk = document.getElementsByName("mk"); //masih menjadi object
+		
+
+			let tjk; //text untuk jenis kelamin
+			if (jk == "l") {
+				tjk = "Laki-laki";
+			} else if (jk == "p") {
+				tjk = "Perempuan";
+			} else {
+				tjk = "Lainnya";
+			}
+
+			let tjurusan; //text untuk jurusan
+			if (jurusan == "if") {
+				tjurusan = "Teknik Informatika";
+			} else if (jurusan == "si") {
+				tjurusan = "Sistem Informasi";
+			} else {
+				tjurusan = "Tidak ada Jurusan";
+			}
+
+			let tmk = ""; //text untuk mata kuliah
+			for (let i = 0; i < mk.length; i++){
+				
+				if(mk[i].checked){
+                	tmk += mk[i].value + ", ";
+            	} 
+			}
+
+
+			alert(
+				'NIM: ' + nim + '\n' +
+				'Nama: ' + nama + '\n' +
+				'Jenis Kelamin: ' + tjk + '\n' +
+				'Tanggal Lahir: ' + tl + '\n' +
+				'Alamat: ' + alamat + '\n' +
+				'Jurusan: ' + tjurusan + '\n' +
+				'Mata Kuliah: ' + tmk + '\n'
+			);
+        	 
+		}
+    </script>
+
+</body>
+
+</html>
