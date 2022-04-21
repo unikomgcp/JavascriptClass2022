@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DOM with Number</title>
+	<!-- <link rel="stylesheet" type="text/css" href="style506.css"> -->
+</head>
+<body>
+	<center><h2>CONTOH FORM JAVASCRIPT DENGAN PERHITUNGAN</h2></center>
+	<center>
+		Membaca Objek tipe Checkbox dan Kuantitas
+		<hr>
+		Pilih Barang
+		<table>
+			<tr><td colspan=2><hr></td></tr>
+			<tr align="center">
+				<td>Nama Barang</td>
+				<td>Jumlah Barang</td>
+			</tr>
+			<tr><td colspan=2><hr></td></tr>
+			<tr>
+				<td><input type="checkbox" name="hp" id="hp" value=5500000>Handphone</td>
+				<td><input type="text" name="jumhp" id="jumhp"></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="laptop" id="laptop" value=15700000>Laptop</td>
+				<td><input type="text" name="jumlt" id="jumlt"></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="komputer" id="komputer" value=8900000>Komputer</td>
+				<td><input type="text" name="jumkom" id="jumkom"></td>
+			</tr>
+			<tr><td colspan=2><hr></td></tr>
+			<tr>
+				<td>Harga</td>
+				<td>Rp. <input type="text" name="harga" id="harga"></td>
+			<tr><td colspan=2><hr></td></tr>
+		</table>
+		<hr>
+		<input type=button value="Proses" onclick="proses()">
+		<input type=reset value="Reset">
+
+</body>
+
+<script type="text/javascript">
+
+	//format currency menggunakan titik
+	function numberWithDot(x) {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+	}
+	//proses ketika di klik submit
+	function proses(){
+		let jumhp = document.getElementById("jumhp").value;
+		let jumlt = document.getElementById("jumlt").value;
+		let jumkom = document.getElementById("jumkom").value;
+		
+		//pendefinisian variabel banyak
+		let harga = 0, totalhp = 0, totallt = 0, totalkom = 0;
+
+		//check apakah checkbox di cheklis atau tidak
+		if (document.getElementById("hp").checked) {
+			totalhp = document.getElementById("hp").value * jumhp;
+		}
+
+		if (document.getElementById("laptop").checked) {
+			totallt = document.getElementById("laptop").value * jumlt;
+		}
+		
+		if (document.getElementById("komputer").checked) {
+			totalkom = document.getElementById("komputer").value * jumkom;
+		}
+
+		harga = totalhp + totallt + totalkom;
+
+		document.getElementById("harga").value = numberWithDot(harga);
+		 
+	}
+</script>
+
+</html>
