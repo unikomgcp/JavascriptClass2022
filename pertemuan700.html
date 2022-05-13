@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Javascript Array Methods</title>
+</head>
+<body>
+
+<h1>JavaScript Array Methods</h1> 
+<h2>toString()</h2>
+<p>The toString() method returns an array as a comma separated string:</p>
+<p id="demoToString"></p>
+<hr />
+
+<h2>join()</h2> 
+<p>The join() method joins array elements into a string.</p>
+<p>It this example we have used " | " as a separator between the elements:</p>
+<p id="demojoin1"></p>
+<hr />
+
+<h2>pop()</h2>
+<p>The pop() method removes the last element from an array.</p>
+<p id="demopop1"></p>
+<p id="demopop2"></p>
+<p id="demopop3"></p>
+<p id="demopop4"></p>
+<hr />
+
+<h2>push()</h2>
+<p>The push() method appends a new element to an array:</p>
+<p id="demopush1"></p>
+<p id="demopush2"></p>
+<p id="demopush3"></p>
+<p id="demopush4"></p>
+<hr />
+
+<h2>shift()</h2>
+<p>The shift() method removes the first element of an array (and "shifts" the other elements to the left):</p>
+<p id="demoshift1"></p>
+<p id="demoshift2"></p>
+<p id="demoshift3"></p>
+<hr />
+
+<h2>unshift()</h2>
+<p>The unshift() method adds new elements to the beginning of an array:</p>
+<p id="demounshift1"></p>
+<p id="demounshift2"></p>
+<p id="demounshift3"></p>
+<hr />
+
+<h2>concat()</h2>
+<p>The concat() method does not change the existing arrays. It always returns a new array.</p>
+<p>The concat() method merges (concatenates) arrays:</p>
+<p id="democoncat1"></p>
+<p id="democoncat2"></p>
+<p id="democoncat3"></p>
+<hr />
+
+<h2>concat()</h2>
+<p>The concat() method merges (concatenates) 3 arrays:</p>
+<p id="democoncat4"></p>
+<p id="democoncat5"></p>
+<hr />
+
+<h1>JavaScript Array Sort</h1>
+<p>The sort() method sorts an array alphabetically:</p>
+<p id="demosort1"></p>
+<p id="demosort2"></p>
+<p id="demosort3"></p>
+<hr />
+
+<h1>JavaScript Array.forEach()</h1>
+<p>Calls a function once for each array element.</p>
+<p id="demoforeach"></p>
+<hr />
+
+<h2>JavaScript Array.filter()</h2>
+<p>Creates a new array with all array elements that passes a test.</p>
+<p id="demofilter"></p>
+<hr />
+
+<script type="text/javascript">
+
+    const fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+    //toString()
+    document.getElementById("demoToString").innerHTML = fruits.toString();
+
+    //join()
+    document.getElementById("demojoin1").innerHTML = fruits.join(" | ");
+
+    //pop()
+    document.getElementById("demopop1").innerHTML = fruits;
+    fruits.pop();
+    document.getElementById("demopop2").innerHTML = fruits;
+    document.getElementById("demopop3").innerHTML = fruits.pop();
+    document.getElementById("demopop4").innerHTML = fruits;
+
+    //push()
+    document.getElementById("demopush1").innerHTML = fruits;
+    fruits.push("Watermelon");
+    document.getElementById("demopush2").innerHTML = fruits;
+    document.getElementById("demopush3").innerHTML = fruits.push("Jackfruit");
+    document.getElementById("demopush4").innerHTML = fruits;
+
+    //shift()
+    document.getElementById("demoshift1").innerHTML = fruits;
+    document.getElementById("demoshift2").innerHTML = fruits.shift();
+    document.getElementById("demoshift3").innerHTML = fruits;
+
+    //unshift()
+    document.getElementById("demounshift1").innerHTML = fruits;
+    document.getElementById("demounshift2").innerHTML = fruits.unshift("Banana");
+    document.getElementById("demounshift3").innerHTML = fruits;
+
+    const womanInClass = ["Amelia", "Paulina"];
+    const manInClass = ["Ridwan", "Zaky", "Setiadi"];
+    const inClass = womanInClass.concat(manInClass);
+
+    //concat
+    document.getElementById("democoncat1").innerHTML = womanInClass;
+    document.getElementById("democoncat2").innerHTML = manInClass;
+    document.getElementById("democoncat3").innerHTML = inClass;
+
+    //concat 3 arrays
+    const teacherInClass = ["Geraldi", "Geraldine"];
+    const allInClass = teacherInClass.concat(manInClass, womanInClass);
+
+    document.getElementById("democoncat4").innerHTML = teacherInClass;
+    document.getElementById("democoncat5").innerHTML = allInClass;
+
+    //sort()
+    document.getElementById("demosort1").innerHTML = allInClass;
+    document.getElementById("demosort2").innerHTML = allInClass.sort();
+
+    //reverse() - membalikan posisi array (jika ingin berurut, harus sort terlebih dahulu)
+    document.getElementById("demosort3").innerHTML = allInClass.reverse();
+
+    //foreach()
+    let txt = "";
+    allInClass.forEach(fClassMembers);
+    document.getElementById("demoforeach").innerHTML = txt;
+
+    function fClassMembers(value, index, array) {
+    txt += value + "<br>"; 
+    }
+
+    //filter
+    const keyword = allInClass.filter(classFilter);
+
+    document.getElementById("demofilter").innerHTML = keyword;
+
+    function classFilter(value, index, array) {
+    return value == "Setiadi";
+    }
+
+
+</script>
+
+</body>
+</html>
